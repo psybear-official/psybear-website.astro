@@ -4,6 +4,7 @@ import { Font } from 'astro:assets'
 import { ClientRouter } from 'astro:transitions'
 import LoadingIndicator from 'astro-loading-indicator/component'
 import { SITE_TITLE, SITE_DESCRIPTION, SITE_URL } from '../consts'
+import { withBase } from '../lib/utils'
 
 const { title, description } = Astro.props
 
@@ -17,7 +18,7 @@ const siteDomain = new URL(SITE_URL).host
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href={withBase('/favicon.svg')} />
     <meta name="generator" content={Astro.generator} />
     <title>{title ?? defaultTitle}</title>
     <meta name="description" content={description ?? defaultDescription} />
@@ -26,7 +27,7 @@ const siteDomain = new URL(SITE_URL).host
     <meta property="og:type" content="website" />
     <meta property="og:title" content={defaultTitle} />
     <meta property="og:description" content={defaultDescription} />
-    <meta property="og:image" content="/social-image.jpg" />
+    <meta property="og:image" content={withBase('/social-image.jpg')} />
 
     <!-- Twitter Meta Tags -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -34,7 +35,7 @@ const siteDomain = new URL(SITE_URL).host
     <meta property="twitter:url" content={`${SITE_URL}/`} />
     <meta name="twitter:title" content={defaultTitle} />
     <meta name="twitter:description" content={defaultDescription} />
-    <meta name="twitter:image" content="/social-image.jpg" />
+    <meta name="twitter:image" content={withBase('/social-image.jpg')} />
 
     <Font cssVariable="--font-geist" preload />
     <ClientRouter />

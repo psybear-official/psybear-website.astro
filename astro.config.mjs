@@ -4,11 +4,11 @@ import { defineConfig, fontProviders } from 'astro/config'
 import tailwindcss from '@tailwindcss/vite'
 import react from '@astrojs/react'
 
-import vercel from '@astrojs/vercel'
-
 // https://astro.build/config
 export default defineConfig({
-  output: 'server',
+  output: 'static',
+  // Staging is served under a path prefix on web1 (e.g. /psybear-staging).
+  base: process.env.BASE_PATH ?? '/',
   vite: {
     plugins: [tailwindcss()],
   },
@@ -23,6 +23,4 @@ export default defineConfig({
       fallbacks: ['Inter', 'sans-serif'],
     },
   ],
-
-  adapter: vercel(),
 })

@@ -1,6 +1,7 @@
 ---
 import clsx from 'clsx'
 import ExternalLink from './external-link.astro'
+import { withBase } from '../lib/utils'
 
 const pathname = Astro.url.pathname
 ---
@@ -34,7 +35,7 @@ const pathname = Astro.url.pathname
         aria-hidden="true"
         class={clsx(
           'w-6 h-6',
-          pathname === '/projects'
+          pathname === withBase('/projects')
             ? 'text-zinc-100'
             : 'text-zinc-500 group-hover:text-zinc-100'
         )}

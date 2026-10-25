@@ -1,5 +1,6 @@
 ---
 import clsx from 'clsx/lite'
+import { withBase } from '../lib/utils'
 
 type Props = {
   href: string
@@ -9,14 +10,15 @@ type Props = {
 const { href, openNewTab = true } = Astro.props
 
 const pathname = Astro.url.pathname
+const resolvedHref = withBase(href)
 ---
 
 <a
-  href={href}
+  href={resolvedHref}
   target={openNewTab ? '_blank' : '_self'}
   class={clsx(
     'w-fit group flex items-center gap-1 text-base hover:text-zinc-100 cursor-pointer',
-    pathname === href ? 'text-zinc-100' : 'text-zinc-500'
+    pathname === resolvedHref ? 'text-zinc-100' : 'text-zinc-500'
   )}
 >
   <slot />
