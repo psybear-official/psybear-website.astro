@@ -36,6 +36,7 @@ export default function Navigation({
             >
               <div className="fixed bottom-20 sm:bottom-32 left-4 sm:left-8 flex flex-col items-start justify-center gap-4">
                 {/* <MobileLink href="/blog">Blog</MobileLink> */}
+                <MobileLink href="/presskit">Press Kit</MobileLink>
                 <MobileLink href="/about">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -57,7 +58,6 @@ export default function Navigation({
                   </svg>
                   About
                 </MobileLink>
-                <MobileLink href="/presskit">Press Kit</MobileLink>
                 <MobileLink href="/contact">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
