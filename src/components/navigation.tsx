@@ -57,6 +57,7 @@ export default function Navigation({
                   </svg>
                   About
                 </MobileLink>
+                <MobileLink href="/presskit">Press Kit</MobileLink>
                 <MobileLink href="/contact">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
