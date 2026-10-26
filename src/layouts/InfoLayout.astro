@@ -2,6 +2,10 @@
 import RootLayout from './RootLayout.astro'
 import Footer from '../components/footer.astro'
 import WarpBackground from '../components/warp-background'
+import { Image } from 'astro:assets'
+import { withBase } from '../lib/utils'
+import { SITE_TITLE } from '../consts'
+import logoWhite from '../assets/presskit/psybear-logo-square-white-transparent.png'
 
 const { title, description } = Astro.props
 
@@ -27,6 +31,19 @@ const pathname = Astro.url.pathname
           client:load
         />
       </div>
+      <!-- The sidebar is only a thin strip below md, too narrow for the logo. -->
+      <a
+        href={withBase('/')}
+        class="hidden md:flex fixed top-8 md:w-2xs xl:w-sm justify-center"
+      >
+        <Image
+          src={logoWhite}
+          alt={`${SITE_TITLE} home`}
+          width={320}
+          class="w-32 xl:w-40 h-auto"
+          loading="eager"
+        />
+      </a>
     </nav>
 
     <main class="relative">

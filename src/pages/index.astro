@@ -4,7 +4,9 @@ import Link from '../components/link.astro'
 import Navigation from '../components/navigation'
 import RootLayout from '../layouts/RootLayout.astro'
 import WarpBackground from '../components/warp-background'
+import { Image } from 'astro:assets'
 import { SITE_TITLE } from '../consts'
+import logoWhite from '../assets/presskit/psybear-logo-square-white-transparent.png'
 // import AvailableForWork from "../components/available.astro";
 ---
 
@@ -29,7 +31,14 @@ import { SITE_TITLE } from '../consts'
       <div
         class="p-4 sm:p-8 absolute w-full h-dvh flex flex-col justify-between z-10"
       >
-        <div>
+        <div class="w-fit flex flex-col items-center">
+          <Image
+            src={logoWhite}
+            alt=""
+            width={320}
+            class="w-24 md:w-32 lg:w-40 h-auto"
+            loading="eager"
+          />
           <H1 size="large">{SITE_TITLE}</H1>
         </div>
 
