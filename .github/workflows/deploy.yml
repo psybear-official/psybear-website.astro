@@ -1,4 +1,4 @@
-# Production: publish the static build of master to GitHub Pages (thepsybear.com, via public/CNAME).
+# Production: publish the static build of master to GitHub Pages (psybear.live, via public/CNAME).
 # Staging is deployed separately by Dokploy from the staging branch.
 name: Deploy to GitHub Pages
 
