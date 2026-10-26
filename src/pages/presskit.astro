@@ -1,0 +1,164 @@
+---
+import { Image } from 'astro:assets'
+import H1 from '../components/h1.astro'
+import ExternalLink from '../components/external-link.astro'
+import InfoLayout from '../layouts/InfoLayout.astro'
+import { SITE_TITLE } from '../consts'
+import logoBlack from '../assets/presskit/psybear-logo-square-transparent.png'
+import logoWhite from '../assets/presskit/psybear-logo-square-white-transparent.png'
+import pressPhoto from '../assets/presskit/psybear-press-photo.png'
+
+// Thumbnails are resized at build time; each links to the original file for download.
+const logos = [
+  {
+    image: logoBlack,
+    label: 'Logo, black on transparent',
+    fileName: 'psybear-logo-square-transparent.png',
+    tileClass: 'bg-zinc-200',
+  },
+  {
+    image: logoWhite,
+    label: 'Logo, white on transparent',
+    fileName: 'psybear-logo-square-white-transparent.png',
+    tileClass: 'bg-zinc-900',
+  },
+]
+
+const pressPhotoUrl =
+  'https://www.dropbox.com/scl/fi/k0gc54sfoouphwc1yxywg/psybear-square.jpg?rlkey=3sshsxwjchhfkbguc763oidt8&dl=1'
+
+const musicStyles = ['Progressive, 138-143 bpm', 'Day Full On, 145-148 bpm']
+
+const socialLinks = [
+  { label: 'Linktree', href: 'https://linktr.ee/psybear' },
+  { label: 'Facebook', href: 'https://www.facebook.com/bearofpsy/' },
+  { label: 'Instagram', href: 'https://www.instagram.com/bearofpsy/' },
+]
+
+const festivals = [
+  { name: 'Yatra Festival 2026', country: 'NZ', closing: true },
+  { name: 'The Land of Magical Rebels 2025', country: 'NZ' },
+  { name: 'Dimension 2025 (Main Stage 3hr set with Full AUM)', country: 'NZ' },
+  { name: 'AfrikaBurn, Green Garden of Psy 2024', country: 'SA' },
+  { name: 'Yatra Festival 2024', country: 'NZ', closing: true },
+  { name: 'Dimension 2024', country: 'NZ' },
+  { name: 'Lost In Paradise NYE 2022-23', country: 'NZ' },
+  { name: 'Lakeside Odyssey 2023', country: 'NZ' },
+  { name: 'Synthesis, Spectrum Launch Party 2023', country: 'NZ' },
+  { name: 'Yatra Festival 2023', country: 'NZ', closing: true },
+  { name: 'Dimension 2023', country: 'NZ' },
+  { name: 'Lost in Paradise NYE Festival 2022-23', country: 'NZ' },
+  { name: 'Circutopia 2022', country: 'NZ' },
+  { name: 'Octoblast 2022', country: 'NZ' },
+  { name: 'Spectrum Festival 2022', country: 'NZ' },
+  { name: 'Vortex 2022', country: 'NZ' },
+  { name: 'Spectrum Festival 2021', country: 'NZ' },
+  { name: 'OmniShakti Festival 2021', country: 'NZ', closing: true },
+  { name: 'Dimension Festival 2021', country: 'NZ' },
+  { name: 'Lost in Paradise NYE Festival 2020-21', country: 'NZ' },
+  { name: 'Circutopia 2020', country: 'NZ', closing: true },
+  { name: 'Octoblast 2020', country: 'NZ' },
+  { name: 'Vortex 2020', country: 'NZ' },
+]
+---
+
+<InfoLayout title={`Press Kit | ${SITE_TITLE}`}>
+  <div class="p-4 sm:pt-8 sm:px-12 pb-20 min-h-dvh flex flex-col gap-16">
+    <div class="space-y-4 sm:space-y-8">
+      <H1>Press Kit</H1>
+      <p class="text-xl xl:text-2xl text-zinc-200 text-balance">
+        A lover of all things psy with a sweet tooth for the full, fun sounds of
+        Full On.
+      </p>
+    </div>
+
+    <section class="space-y-4">
+      <h2 class="text-2xl text-zinc-100">Bio</h2>
+      <p class="text-lg text-zinc-400 text-balance">
+        Sergei spent his youth aimlessly traveling the soundscapes of what music
+        had to offer. These were the dark years. It was not until discovering Psy
+        Trance in 2018, did he find a sonic equivalent of a home.
+      </p>
+      <p class="text-lg text-zinc-400 text-balance">
+        After falling deeply in love with the rich sounds of Psy Trance and the
+        brothers and sisters that make up the Scene, Sergei found his rightful
+        calling behind the decks.
+      </p>
+      <p class="text-lg text-zinc-400 text-balance">
+        PsyBear will be energising & putting a smile on faces of anyone who will
+        listen with his selection of uplifting Day Full-on.
+      </p>
+      <p class="text-lg text-zinc-400 text-balance">
+        Stretch, hydrate and wear ear protection because then PsyBear will start
+        doing his thing behind the decks, you are going to need it.
+      </p>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-2xl text-zinc-100">Music style</h2>
+      <ul class="px-4 text-lg text-zinc-400 list-disc list-outside">
+        {musicStyles.map((style) => <li>{style}</li>)}
+      </ul>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-2xl text-zinc-100">Logos</h2>
+      <p class="text-base text-zinc-500">Click a logo to download the full-size PNG (1000 × 1000).</p>
+      <div class="flex flex-wrap gap-4">
+        {
+          logos.map((logo) => (
+            <a
+              href={logo.image.src}
+              download={logo.fileName}
+              class={`block rounded-xl p-4 ${logo.tileClass} hover:ring-2 hover:ring-zinc-400 transition`}
+            >
+              <Image
+                src={logo.image}
+                alt={`${SITE_TITLE} ${logo.label}`}
+                width={200}
+                format="webp"
+              />
+            </a>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-2xl text-zinc-100">Press photo</h2>
+      <p class="text-base text-zinc-500">Click the photo to download the full-size JPG.</p>
+      <a
+        href={pressPhotoUrl}
+        class="block w-fit rounded-xl overflow-hidden hover:ring-2 hover:ring-zinc-400 transition"
+      >
+        <Image
+          src={pressPhoto}
+          alt={`${SITE_TITLE} performing behind the decks`}
+          width={320}
+          format="webp"
+        />
+      </a>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-2xl text-zinc-100">Socials</h2>
+      <div class="flex flex-col gap-2">
+        {socialLinks.map((link) => <ExternalLink href={link.href}>{link.label}</ExternalLink>)}
+      </div>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-2xl text-zinc-100">Festivals played</h2>
+      <ul class="px-4 text-lg text-zinc-400 list-disc list-outside">
+        {
+          festivals.map((festival) => (
+            <li>
+              {festival.name} ({festival.country})
+              {festival.closing && <strong class="text-zinc-200"> Closing</strong>}
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </div>
+</InfoLayout>

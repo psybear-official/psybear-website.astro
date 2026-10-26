@@ -4,6 +4,7 @@ import Link from '../components/link.astro'
 import Navigation from '../components/navigation'
 import RootLayout from '../layouts/RootLayout.astro'
 import WarpBackground from '../components/warp-background'
+import { SITE_TITLE } from '../consts'
 // import AvailableForWork from "../components/available.astro";
 ---
 
@@ -29,7 +30,7 @@ import WarpBackground from '../components/warp-background'
         class="p-4 sm:p-8 absolute w-full h-dvh flex flex-col justify-between z-10"
       >
         <div>
-          <H1 size="large">Sergei <br />Filippov</H1>
+          <H1 size="large">{SITE_TITLE}</H1>
         </div>
 
         <div>
@@ -41,8 +42,8 @@ import WarpBackground from '../components/warp-background'
             </div>
 
             <Navigation client:load>
-              <Link href="/blog" variant="secondary">Blog</Link>
-              <Link href="/about" variant="secondary">About</Link>
+              <!-- <Link href="/blog" variant="secondary">Blog</Link> -->
+              <Link href="/presskit" variant="secondary">Press Kit</Link>
               <Link href="/contact" variant="secondary">Contact</Link>
             </Navigation>
           </div>
