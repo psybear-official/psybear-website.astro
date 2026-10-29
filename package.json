@@ -6,28 +6,31 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "check": "astro check"
   },
   "dependencies": {
-    "@astrojs/react": "7.1.1",
-    "@paper-design/shaders-react": "^0.0.76",
-    "@tailwindcss/vite": "^4.3.0",
-    "@types/react": "^19.2.15",
-    "@types/react-dom": "^19.2.3",
-    "@varlock/astro-integration": "^1.4.4",
-    "astro": "7.4.2",
-    "astro-loading-indicator": "^0.8.0",
+    "@astrojs/react": "7.1.2",
+    "@paper-design/shaders-react": "^0.0.82",
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@varlock/astro-integration": "^1.4.5",
+    "astro": "7.4.4",
+    "astro-loading-indicator": "^0.9.0",
     "clsx": "^2.1.1",
-    "motion": "^12.40.0",
-    "react": "^19.2.6",
-    "react-dom": "^19.2.6",
-    "sharp": "^0.34.5",
-    "tailwindcss": "^4.3.0",
-    "varlock": "^1.23.0"
+    "motion": "^14.8.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "sharp": "^0.35.5",
+    "tailwindcss": "^4.3.3",
+    "varlock": "^1.24.0"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.19",
-    "prettier": "^3.9.5",
-    "prettier-plugin-astro": "^0.14.1"
+    "@astrojs/check": "^0.9.12",
+    "@tailwindcss/typography": "^0.5.20",
+    "prettier": "^3.9.10",
+    "prettier-plugin-astro": "^1.1.2",
+    "typescript": "^6.0.3"
   }
 }
