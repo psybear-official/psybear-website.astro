@@ -5,6 +5,10 @@ import InfoLayout from '../layouts/InfoLayout.astro'
 import ACGenerator from '../assets/ac-generator.jpg'
 import FluidPropulsion from '../assets/fluid-propulsion.jpg'
 import ElectricMotor from '../assets/electro-magnetic-motor.jpg'
+import { withBase } from '../lib/utils'
+
+// Projects disabled until real projects replace the template placeholders — remove this line to re-enable.
+return Astro.redirect(withBase('/'))
 
 const projects = [
   {
