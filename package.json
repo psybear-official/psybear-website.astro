@@ -1,5 +1,5 @@
 {
-  "name": "nikola-tesla",
+  "name": "psybear",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@astrojs/react": "7.1.2",
+    "@astrojs/sitemap": "^3.7.4",
     "@paper-design/shaders-react": "^0.0.82",
     "@tailwindcss/vite": "^4.3.4",
     "@types/react": "^19.3.0",
@@ -28,7 +29,6 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.12",
-    "@tailwindcss/typography": "^0.5.20",
     "prettier": "^3.9.10",
     "prettier-plugin-astro": "^1.1.2",
     "typescript": "^6.0.3"

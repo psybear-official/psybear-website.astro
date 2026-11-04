@@ -49,8 +49,7 @@ export default function Navigation({
             className="lg:hidden absolute z-50 w-full h-full flex flex-col gap-4 top-0 bg-zinc-900/20 backdrop-blur-md"
           >
             <div className="fixed bottom-20 sm:bottom-32 left-4 sm:left-8 flex flex-col items-start justify-center gap-4">
-              {/* <MobileLink href="/blog">Blog</MobileLink> */}
-              <MobileLink href="/presskit">
+              <MobileLink href="/presskit/">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="32"
@@ -75,7 +74,7 @@ export default function Navigation({
                 </svg>
                 Press Kit
               </MobileLink>
-              <MobileLink href="/contact">
+              <MobileLink href="/contact/">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="32"
