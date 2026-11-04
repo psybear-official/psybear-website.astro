@@ -5,16 +5,13 @@ import Navigation from '../components/navigation'
 import RootLayout from '../layouts/RootLayout.astro'
 import WarpBackground from '../components/warp-background'
 import { Image } from 'astro:assets'
-import { SITE_TITLE } from '../consts'
+import { SITE_TITLE, SITE_TAGLINE } from '../consts'
 import logoWhite from '../assets/presskit/psybear-logo-square-white-transparent.png'
-// import AvailableForWork from "../components/available.astro";
 ---
 
-<RootLayout>
+<RootLayout title={`${SITE_TITLE} | Psytrance DJ, Auckland, New Zealand`}>
   <main>
-    <div
-      class="group relative w-full h-dvh overflow-hidden flex items-center justify-center"
-    >
+    <div class="group relative w-full h-dvh overflow-hidden flex items-center justify-center">
       <div class="absolute w-full h-dvh -z-10">
         <WarpBackground
           speed={0.6}
@@ -25,32 +22,36 @@ import logoWhite from '../assets/presskit/psybear-logo-square-white-transparent.
         />
       </div>
 
-      <div
-        class="p-4 sm:p-8 absolute w-full h-dvh flex flex-col justify-between z-10"
-      >
-        <div class="w-fit flex flex-col md:flex-row items-center">
-          <Image
-            src={logoWhite}
-            alt=""
-            width={320}
-            class="w-24 md:w-32 lg:w-40 h-auto"
-            loading="eager"
-          />
-          <H1 size="large">{SITE_TITLE}</H1>
+      <div class="p-4 sm:p-8 absolute w-full h-dvh flex flex-col justify-between z-10">
+        <div>
+          <div class="w-fit flex flex-col md:flex-row items-center">
+            <Image
+              src={logoWhite}
+              alt=""
+              width={320}
+              class="w-24 md:w-32 lg:w-40 h-auto"
+              loading="eager"
+            />
+            <H1 size="large">{SITE_TITLE}</H1>
+          </div>
+          <p class="mt-2 md:mt-0 text-lg md:text-2xl text-zinc-200 text-balance max-w-2xl">
+            {SITE_TAGLINE}
+          </p>
         </div>
 
         <div>
-          <!-- <AvailableForWork className="py-4" /> -->
           <div class="mb-2 sm:mb-4 flex items-center justify-between">
             <div class="flex items-center gap-4">
               <!-- <Link href="#">Book a call</Link> -->
-              <!-- <Link href="/projects" variant="secondary">View recent work</Link> -->
             </div>
 
             <Navigation client:load>
-              <!-- <Link href="/blog" variant="secondary">Blog</Link> -->
-              <Link href="/presskit" variant="secondary">Press Kit</Link>
-              <Link href="/contact" variant="secondary">Contact</Link>
+              <Link href="/presskit/" variant="secondary">
+                Press Kit
+              </Link>
+              <Link href="/contact/" variant="secondary">
+                Contact
+              </Link>
             </Navigation>
           </div>
         </div>
