@@ -3,40 +3,120 @@ import '../styles/global.css'
 import { Font } from 'astro:assets'
 import { ClientRouter } from 'astro:transitions'
 import LoadingIndicator from 'astro-loading-indicator/component'
-import { SITE_TITLE, SITE_DESCRIPTION, SITE_URL } from '../consts'
+import {
+  SITE_TITLE,
+  SITE_DESCRIPTION,
+  SITE_URL,
+  EMAIL_ADDRESS,
+  LOCATION,
+  GENRES,
+  SOCIAL_LINKS,
+} from '../consts'
 import { withBase } from '../lib/utils'
 
-const { title, description } = Astro.props
+type Props = {
+  title?: string
+  description?: string
+}
 
-const defaultTitle = SITE_TITLE
-const defaultDescription = SITE_DESCRIPTION
-const siteDomain = new URL(SITE_URL).host
+const { title = SITE_TITLE, description = SITE_DESCRIPTION } = Astro.props
+
+// Astro.site comes from `site` in astro.config.mjs; Astro.url.pathname already includes the base path.
+const site = Astro.site ?? new URL(SITE_URL)
+const absoluteUrl = (path: string) => new URL(path, site).href
+const canonicalUrl = absoluteUrl(Astro.url.pathname)
+const homeUrl = absoluteUrl(withBase('/'))
+const socialImage = {
+  url: absoluteUrl(withBase('/social-image.jpg')),
+  width: 1200,
+  height: 630,
+  alt: `${SITE_TITLE}, psytrance DJ from ${LOCATION.city}, ${LOCATION.country}`,
+}
+const logoUrl = absoluteUrl(withBase('/psybear-logo.png'))
+
+// Staging is served under a path prefix; keep it out of search results.
+const isStaging = import.meta.env.BASE_URL !== '/'
+
+// Structured data: who PsyBear is, for Google's knowledge panel and AI agents.
+const artistId = `${homeUrl}#artist`
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'MusicGroup',
+      '@id': artistId,
+      name: SITE_TITLE,
+      description: SITE_DESCRIPTION,
+      url: homeUrl,
+      image: socialImage.url,
+      logo: logoUrl,
+      email: `mailto:${EMAIL_ADDRESS}`,
+      genre: GENRES,
+      foundingLocation: {
+        '@type': 'Place',
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: LOCATION.city,
+          addressCountry: LOCATION.countryCode,
+        },
+      },
+      sameAs: SOCIAL_LINKS.map((link) => link.href),
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${homeUrl}#website`,
+      name: SITE_TITLE,
+      url: homeUrl,
+      inLanguage: 'en-NZ',
+      publisher: { '@id': artistId },
+    },
+  ],
+}
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en-NZ">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    {isStaging && <meta name="robots" content="noindex, nofollow" />}
+
     <link rel="icon" type="image/svg+xml" href={withBase('/favicon.svg')} />
+    <link rel="apple-touch-icon" href={withBase('/apple-touch-icon.png')} />
+    <link rel="sitemap" href={withBase('/sitemap.xml')} />
+    <link
+      rel="alternate"
+      type="text/plain"
+      title="llms.txt"
+      href={withBase('/llms.txt')}
+    />
+    <meta name="theme-color" content="#18181b" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title ?? defaultTitle}</title>
-    <meta name="description" content={description ?? defaultDescription} />
 
-    <meta property="og:url" content={`${SITE_URL}/`} />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content={defaultTitle} />
-    <meta property="og:description" content={defaultDescription} />
-    <meta property="og:image" content={withBase('/social-image.jpg')} />
+    <meta property="og:site_name" content={SITE_TITLE} />
+    <meta property="og:locale" content="en_NZ" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={socialImage.url} />
+    <meta property="og:image:width" content={String(socialImage.width)} />
+    <meta property="og:image:height" content={String(socialImage.height)} />
+    <meta property="og:image:alt" content={socialImage.alt} />
 
-    <!-- Twitter Meta Tags -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta property="twitter:domain" content={siteDomain} />
-    <meta property="twitter:url" content={`${SITE_URL}/`} />
-    <meta name="twitter:title" content={defaultTitle} />
-    <meta name="twitter:description" content={defaultDescription} />
-    <meta name="twitter:image" content={withBase('/social-image.jpg')} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImage.url} />
+    <meta name="twitter:image:alt" content={socialImage.alt} />
 
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(structuredData)}
+    />
     <Font cssVariable="--font-geist" preload />
     <ClientRouter />
     <LoadingIndicator color="#f4f4f5" height="2px" />
