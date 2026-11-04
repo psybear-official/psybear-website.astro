@@ -3,19 +3,23 @@ import { defineConfig, fontProviders } from 'astro/config'
 
 import tailwindcss from '@tailwindcss/vite'
 import react from '@astrojs/react'
+import sitemap from '@astrojs/sitemap'
 import varlockAstroIntegration from '@varlock/astro-integration'
 import { ENV } from 'varlock/env'
+import { SITE_URL } from './src/consts'
 
 // https://astro.build/config
 export default defineConfig({
   output: 'static',
+  // Canonical URLs, Open Graph URLs and the sitemap are built from this.
+  site: SITE_URL,
   // Staging is served under a path prefix on web1 (e.g. /psybear-staging).
   base: ENV.BASE_PATH,
   vite: {
     plugins: [tailwindcss()],
   },
 
-  integrations: [varlockAstroIntegration(), react()],
+  integrations: [varlockAstroIntegration(), react(), sitemap()],
 
   fonts: [
     {
