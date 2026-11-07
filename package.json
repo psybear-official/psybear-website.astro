@@ -10,20 +10,20 @@
     "check": "astro check"
   },
   "dependencies": {
-    "@astrojs/react": "7.1.2",
+    "@astrojs/react": "7.1.4",
     "@paper-design/shaders-react": "^0.0.82",
-    "@tailwindcss/vite": "^4.3.4",
+    "@tailwindcss/vite": "^4.3.5",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "@varlock/astro-integration": "^1.4.5",
-    "astro": "7.4.5",
+    "astro": "7.4.7",
     "astro-loading-indicator": "^0.9.0",
     "clsx": "^2.1.1",
-    "motion": "^14.9.0",
+    "motion": "^14.10.1",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "sharp": "^0.35.5",
-    "tailwindcss": "^4.3.4",
+    "tailwindcss": "^4.3.5",
     "varlock": "^1.24.0"
   },
   "devDependencies": {
